@@ -14,8 +14,43 @@
 
 let currentDate = $("#currentDay");
 
-function showCurrentDay() {
-    currentDate.text(moment().format('dddd, MMMM DD YYYY, h:mm:ss a'));
+currentDate.text(moment().format('dddd, MMMM DD YYYY, h:mm a'));
+
+
+let currentHour = parseInt(moment().format('H'));
+let workHour = parseInt($('.hour').text());
+console.log(currentHour);
+
+console.log(workHour);
+
+
+if (currentHour === workHour) {
+    $('.textInput').addClass('present');
+} else if (currentHour > workHour) {
+    $('.textInput').addClass('past');
+} else if (currentHour < workHour) {
+    $('.textInput').addClass('future');
 }
 
-showCurrentDay();
+
+// function checkTime {
+
+//     if (moment())
+
+
+
+// }
+
+
+
+// function pastTime {
+
+// };
+
+// function currentTime {
+
+// }
+
+// function futureTime {
+
+// }
