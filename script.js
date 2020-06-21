@@ -17,13 +17,13 @@ let timeDiv = $('.day-row');
 
 let currentHour = parseInt(moment().format('H'));
 let workHour = parseInt($('.hour').text());
-let storedSchedule = [];
-// let storedSchedule = JSON.parse(localStorage.getItem("storedSchedule")) || [];
+let storedSchedule = JSON.parse(localStorage.getItem("storedSchedule")) || [];
 
 currentDate.text(moment().format('dddd, MMMM DD YYYY, h:mm a'));
 
 resetSchedule();
 setColour();
+setSchedule();
 
 
 function resetSchedule() {
@@ -32,10 +32,6 @@ function resetSchedule() {
     $('.textInput').removeClass('future');
 }
 
-
-console.log(currentHour);
-
-console.log(workHour);
 
 function setColour() {
     if (currentHour === workHour) {
@@ -47,53 +43,26 @@ function setColour() {
     }
 }
 
-if (storedSchedule != "") {
-    if (schedule.time == $('timeDiv').attr('id')) {
-        $('#' + time).children($('.textInput')).text(JSON.stringify(text));
+function setSchedule() {
+    if (storedSchedule != "") {
+        if (storedSchedule.time == $('timeDiv').attr('id')) {
+            $('#' + storedSchedule.time).children($('.textInput')).text(JSON.stringify(storedSchedule.text));
+        }
     }
 }
 
-
-
-
 $(".saveBtn").on("click", function() {
 
-    let text = $(this).parent().siblings(".textarea").text();
     let time = $(this).parent().attr("id");
+    let text = $(this).parent().children("#textArea-" + time).val();
 
     let schedule = {
-        text: text,
-        time: time
+        time: time,
+        text: text
+
     }
 
-    localStorage.setItem('storedSchedule', JSON.stringify(text));
     storedSchedule.push(schedule);
+    localStorage.setItem('storedSchedule', JSON.stringify(storedSchedule));
+    console.log(storedSchedule);
 });
-
-
-console.log(storedSchedule);
-
-
-
-
-// function checkTime {
-
-//     if (moment())
-
-
-
-// }
-
-
-
-// function pastTime {
-
-// };
-
-// function currentTime {
-
-// }
-
-// function futureTime {
-
-// }
