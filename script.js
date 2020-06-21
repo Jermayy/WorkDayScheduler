@@ -13,24 +13,67 @@
 // - if hour in future, time block = green;
 
 let currentDate = $("#currentDay");
-
-currentDate.text(moment().format('dddd, MMMM DD YYYY, h:mm a'));
-
+let timeDiv = $('.day-row');
 
 let currentHour = parseInt(moment().format('H'));
 let workHour = parseInt($('.hour').text());
+let storedSchedule = [];
+// let storedSchedule = JSON.parse(localStorage.getItem("storedSchedule")) || [];
+
+currentDate.text(moment().format('dddd, MMMM DD YYYY, h:mm a'));
+
+resetSchedule();
+setColour();
+
+
+function resetSchedule() {
+    $('.textInput').removeClass('present');
+    $('.textInput').removeClass('past');
+    $('.textInput').removeClass('future');
+}
+
+
 console.log(currentHour);
 
 console.log(workHour);
 
-
-if (currentHour === workHour) {
-    $('.textInput').addClass('present');
-} else if (currentHour > workHour) {
-    $('.textInput').addClass('past');
-} else if (currentHour < workHour) {
-    $('.textInput').addClass('future');
+function setColour() {
+    if (currentHour === workHour) {
+        $('.textInput').addClass('present');
+    } else if (currentHour > workHour) {
+        $('.textInput').addClass('past');
+    } else if (currentHour < workHour) {
+        $('.textInput').addClass('future');
+    }
 }
+
+if (storedSchedule != "") {
+    if (schedule.time == $('timeDiv').attr('id')) {
+        $('#' + time).children($('.textInput')).text(JSON.stringify(text));
+    }
+}
+
+
+
+
+$(".saveBtn").on("click", function() {
+
+    let text = $(this).parent().siblings(".textarea").text();
+    let time = $(this).parent().attr("id");
+
+    let schedule = {
+        text: text,
+        time: time
+    }
+
+    localStorage.setItem('storedSchedule', JSON.stringify(text));
+    storedSchedule.push(schedule);
+});
+
+
+console.log(storedSchedule);
+
+
 
 
 // function checkTime {
