@@ -14,55 +14,81 @@
 
 let currentDate = $("#currentDay");
 let timeDiv = $('.day-row');
+let hourTextbox = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 
 let currentHour = parseInt(moment().format('H'));
 let workHour = parseInt($('.hour').text());
-let storedSchedule = JSON.parse(localStorage.getItem("storedSchedule")) || [];
+// let storedSchedule = JSON.parse(localStorage.getItem("storedSchedule")) || [];
 
 currentDate.text(moment().format('dddd, MMMM DD YYYY, h:mm a'));
 
-resetSchedule();
-setColour();
-setSchedule();
+// resetSchedule();
+// setColour();
+// setSchedule();
 
 
-function resetSchedule() {
-    $('.textInput').removeClass('present');
-    $('.textInput').removeClass('past');
-    $('.textInput').removeClass('future');
+// function resetSchedule() {
+//     $('.textInput').removeClass('present');
+//     $('.textInput').removeClass('past');
+//     $('.textInput').removeClass('future');
+// }
+
+
+
+
+
+
+
+// for (let i = 0; i < hourTextbox.length; i++) {
+
+//     let time = hourTextbox[i].value;
+
+
+if (currentHour === workHour) {
+    $('#textInput-' + workHour).addClass('present');
+} else if (currentHour > workHour) {
+    $('#textInput-' + workHour).addClass('past');
+} else if (currentHour < workHour) {
+    $('#textInput-' + workHour).addClass('future');
 }
+// }
 
 
-function setColour() {
-    if (currentHour === workHour) {
-        $('.textInput').addClass('present');
-    } else if (currentHour > workHour) {
-        $('.textInput').addClass('past');
-    } else if (currentHour < workHour) {
-        $('.textInput').addClass('future');
-    }
-}
 
-function setSchedule() {
-    if (storedSchedule != "") {
-        if (storedSchedule.time == $('timeDiv').attr('id')) {
-            $('#' + storedSchedule.time).children($('.textInput')).text(JSON.stringify(storedSchedule.text));
-        }
-    }
-}
 
-$(".saveBtn").on("click", function() {
 
-    let time = $(this).parent().attr("id");
-    let text = $(this).parent().children("#textArea-" + time).val();
 
-    let schedule = {
-        time: time,
-        text: text
 
-    }
 
-    storedSchedule.push(schedule);
-    localStorage.setItem('storedSchedule', JSON.stringify(storedSchedule));
-    console.log(storedSchedule);
-});
+
+// function setSchedule() {
+//     if (storedSchedule !== "") {
+//         if (storedSchedule.time == $('timeDiv').attr('id')) {
+//             $('#' + storedSchedule.time).children($('.textInput')).val(JSON.stringify(storedSchedule.text));
+//         }
+//     }
+// }
+
+// $(".saveBtn").on("click", function(event) {
+//     event.preventDefault();
+
+
+//     let time = $(this).parent().attr("id");
+//     let text = $(this).parent().children("#textArea-" + time).val();
+
+//     if (text === "") {
+//         return;
+//     }
+
+
+//     let schedule = {
+//         time: time,
+//         text: text
+//     };
+
+//     storedSchedule.push(schedule);
+//     console.log(storedSchedule);
+//     localStorage.setItem('storedSchedule', JSON.stringify(storedSchedule));
+
+
+// });
