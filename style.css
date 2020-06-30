@@ -46,6 +46,7 @@ textarea {
     font-size: 25px;
     padding-top: 20px;
 }
+*/
 
 .past {
     background-color: #d3d3d3;
@@ -60,7 +61,7 @@ textarea {
 .future {
     background-color: #77dd77;
     color: white;
-} */
+}
 
 .saveBtn {
     border-left: 1px solid black;

@@ -1,5 +1,15 @@
 const currentDate = $("#currentDay");
 currentDate.text(moment().format('dddd, MMMM DD YYYY, h:mm a'));
+let currentHour = moment().format('H');
+
+let storedPlans = JSON.parse(localStorage.getItem("storedPlans"));
+
+if (storedPlans !== null) {
+    planTextArr = storedPlans;
+} else {
+    planTextArr = new Array(9);
+}
+
 
 for (let hour = 9; hour <= 17; hour++) {
     let hourIndex = hour - 9;
@@ -33,9 +43,14 @@ for (let hour = 9; hour <= 17; hour++) {
     textInputBox.addClass('inputBox');
     textInputBox.attr('id', "input-" + hourIndex);
     textInputBox.attr('hour-index', hourIndex);
+    textInputBox.attr('rows', 3);
+    textInputBox.attr('cols', 20);
+
+    textInputBox.val(planTextArr[hourIndex]);
 
     let inputBoxDiv = $('<div>');
     inputBoxDiv.addClass("col-9");
+
 
     inputBoxDiv.append(textInputBox);
     newRow.append(inputBoxDiv);
@@ -51,8 +66,33 @@ for (let hour = 9; hour <= 17; hour++) {
 
 
 
+    if (currentHour > hour) {
+        // past hours are grey
+        textInputBox.addClass('past');
+    } else if (currentHour < hour) {
+        // future hours are purple
+        textInputBox.addClass('future')
+    } else {
+        // current hour is green
+        textInputBox.addClass('present')
+    }
+
 
 }
+
+$("button").on('click', function(event) {
+    event.preventDefault();
+    let $index = $(this).attr("save-id");
+    let inputId = `#input-` + $index;
+    let $value = $(inputId).val();
+
+    planTextArr[$index] = $value;
+
+    localStorage.setItem("storedPlans", JSON.stringify(planTextArr));
+})
+
+
+
 
 
 
@@ -81,7 +121,7 @@ for (let hour = 9; hour <= 17; hour++) {
 // let timeDiv = $('.day-row');
 // let hourTextbox = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 
-// let currentHour = parseInt(moment().format('H'));
+// 
 // let workHour = parseInt($('.hour').text());
 // // let storedSchedule = JSON.parse(localStorage.getItem("storedSchedule")) || [];
 
