@@ -19,11 +19,12 @@ Deployed Application URL: https://jermayy.github.io/WorkDayScheduler/
 - if current hour: colour = red
 - if future hour: colour = green
 
-
+![](/screenshot/1.png)
 
 
 3. User can enter their task for a specific hour and click the save button to store the value 
 
+![](/screenshot/2.png)
 
 4. When user refreshes page, any saved values should repopulate their respective time blocks
 

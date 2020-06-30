@@ -25,6 +25,8 @@ textarea {
     white-space: pre-wrap;
 }
 
+
+/* 
 .time-block {
     text-align: center;
     border-radius: 15px;
@@ -58,7 +60,7 @@ textarea {
 .future {
     background-color: #77dd77;
     color: white;
-}
+} */
 
 .saveBtn {
     border-left: 1px solid black;
@@ -67,7 +69,7 @@ textarea {
     background-color: #06AED5;
     color: white;
     text-align: center;
-    font-size: 30px;
+    font-size: auto;
     padding-top: 20px;
 }
 
@@ -75,7 +77,9 @@ textarea {
     background-color: rgb(40, 136, 210);
 }
 
+
+/* 
 i:hover {
     font-size: 40px;
     transition: all .3s ease-in-out;
-}
+}  */
