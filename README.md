@@ -15,9 +15,9 @@ Deployed Application URL: https://jermayy.github.io/WorkDayScheduler/
 
 2. browser will check current time, display each timeblock as a different colour depending on:
 
-- if hour has already past: colour = grey
-- if current hour: colour = red
-- if future hour: colour = green
+- if hour has already past: colour = Red
+- if current hour: colour = Green
+- if future hour: colour = Grey
 
 ![](/screenshot/1.png)
 
@@ -34,12 +34,9 @@ Deployed Application URL: https://jermayy.github.io/WorkDayScheduler/
 
 
 # Notes
-* There are numerous bugs in this application:
-    - unable to implement feature to compare current time with timeblocks and change colour accordingly. Code currently changes class and colour of all blocks rather than go row by row --> code currently does not colour text boxes anymore
-    - able to save objects into local storage, but unable to retrieve and repopulate timeblock values
-* Planning to revisit this exercise at a later date to complete
+* Application has been updated to work as intended with new styling
 
 
 
 
-Last Edited 22/06/2020
+Last Edited 01/07/2020
